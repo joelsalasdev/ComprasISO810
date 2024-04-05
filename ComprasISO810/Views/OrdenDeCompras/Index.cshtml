@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ComprasISO810.Models.OrdenDeCompra>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Ordenes de Compras</h1>
+@section Scripts {
+    <script>
+        function search() {
+            var searchText = $("#txtSearch").val().toLowerCase(); // Make search case-insensitive
+            $(".table tbody tr").each(function () {
+                var textContent = $(this).text().toLowerCase();
+                if (textContent.indexOf(searchText) !== -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    </script>
+}
+
+<style>
+    /* Style the search bar and button */
+    #txtSearch {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 200px;
+    }
+
+    #searchButton {
+        padding: 5px 10px;
+        background-color: #4CAF50; /* Green color */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="search-container">
+    <input type="text" id="txtSearch" placeholder="Buscar..." />
+    <button type="button" id="searchButton" onclick="search()">Buscar</button>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaOrden)
+            </th>
+            <!-- <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th> -->
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticuloNavigation)
+            </th>
+            <!--th>
+                @Html.DisplayNameFor(model => model.IdSolicitudNavigation)
+            </th> -->
+            </th>
+            <!-- <th>
+                @Html.DisplayNameFor(model => model.MarcaNavigation)
+            </th> --> 
+            <!-- <th>
+                @Html.DisplayNameFor(model => model.UnidadDeMedidaNavigation)
+            </th> -->
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaOrden)
+            </td>
+            <!--<td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>-->
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticuloNavigation.Descripcion)
+            </td>
+            <!--<td>
+                @Html.DisplayFor(modelItem => item.IdSolicitudNavigation.Id)
+            </td>-->
+            <!--<td>
+                @Html.DisplayFor(modelItem => item.MarcaNavigation.Id)
+            </td>-->
+            <!--<td>
+                @Html.DisplayFor(modelItem => item.UnidadDeMedidaNavigation.Id)
+            </td>--> 
+            <!--<td>
+                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+            </td>-->
+        </tr>
+}
+    </tbody>
+</table>

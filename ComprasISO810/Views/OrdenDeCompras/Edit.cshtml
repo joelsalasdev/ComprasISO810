@@ -1,0 +1,64 @@
+﻿@model ComprasISO810.Models.OrdenDeCompra
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OrdenDeCompra</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="IdSolicitud" class="control-label"></label>
+                <select asp-for="IdSolicitud" class="form-control" asp-items="ViewBag.IdSolicitud"></select>
+                <span asp-validation-for="IdSolicitud" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaOrden" class="control-label"></label>
+                <input asp-for="FechaOrden" class="form-control" />
+                <span asp-validation-for="FechaOrden" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Articulo" class="control-label"></label>
+                <select asp-for="Articulo" class="form-control" asp-items="ViewBag.Articulo"></select>
+                <span asp-validation-for="Articulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnidadDeMedida" class="control-label"></label>
+                <select asp-for="UnidadDeMedida" class="form-control" asp-items="ViewBag.UnidadDeMedida"></select>
+                <span asp-validation-for="UnidadDeMedida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Marca" class="control-label"></label>
+                <select asp-for="Marca" class="form-control" asp-items="ViewBag.Marca"></select>
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
